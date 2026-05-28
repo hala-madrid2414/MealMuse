@@ -1,0 +1,22 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# build outputs
+dist
+build
+.temp
+
+# IDE
+.idea
+.vscode
+.tra
+
+# logs
+logs
+*.log
+npm-debug.log*
+
+# env files
+.env
+.env.*
