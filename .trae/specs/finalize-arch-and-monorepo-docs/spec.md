@@ -7,6 +7,7 @@
 - 对 [技术选型与架构文档 (1).md](file:///f:/MealMuse/技术选型与架构文档%20(1).md) 做全面复核与修订，形成“正式版”内容（保留文件名，直接在原文上修订）。
 - 补齐并统一：技术栈版本锁定策略、架构分层边界、可扩展性设计、性能与可靠性指标、工程化与安全基线。
 - **新增**一份独立的《pnpm monorepo 工程搭建指引》（手把手步骤），面向 “Taro 前端 + NestJS 后端 + shared 共享包” 的组合。
+- **新增**根目录 `README.md`，包含 nvm 安装 Node.js、pnpm 安装/锁定、前后端启动方式（Quick Start）。
 - **BREAKING**：移除/改写现文档中与需求相冲突或不符合最佳实践的建议（例如“无需 commitlint / 可直接推 main / 共享根 .env 存放敏感变量”等）。
 
 ## Impact
@@ -14,6 +15,7 @@
 - Affected code: 不涉及任何功能性代码的编写或生成；仅修改/新增 Markdown 文档
   - 直接修订：[技术选型与架构文档 (1).md](file:///f:/MealMuse/技术选型与架构文档%20(1).md)
   - 新增文档（拟定路径）：`f:\MealMuse\pnpm-monorepo工程搭建指引.md`
+  - 新增文档（拟定路径）：`f:\MealMuse\README.md`
 
 ## ADDED Requirements
 ### Requirement: 技术选型与架构文档定稿

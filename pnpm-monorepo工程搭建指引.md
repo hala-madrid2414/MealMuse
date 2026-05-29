@@ -93,7 +93,7 @@ Workspace 使用规则（必须遵守）：
   - `workspace:*`：随 workspace 当前版本（适合内部包）
   - `workspace:^`：跟随 semver 主版本策略（适合将来可能发布）
 
-示例（`apps/server/package.json` 依赖 shared）：
+示例（`apps/server/package.json` 依赖 shared；包名可按团队规范决定）：
 
 ```json
 {
@@ -173,7 +173,7 @@ mkdir apps/client apps/server packages/shared
 ```
 
 要求：
-- `apps/client/package.json` 的 `name` 推荐：`@mealmuse/client`
+- `apps/client/package.json` 的 `name` 建议使用 scoped 包名（例如 `@mealmuse/client`），也可以先用 `client`（当前仓库即为该命名），后续再统一重命名
 - 在 client 内提供脚本（示例）：
   - `dev:h5`、`dev:weapp`、`build:h5`、`build:weapp`
   - `lint`、`format`
@@ -188,7 +188,7 @@ mkdir apps/client apps/server packages/shared
 ```
 
 要求：
-- `apps/server/package.json` 的 `name` 推荐：`@mealmuse/server`
+- `apps/server/package.json` 的 `name` 建议使用 scoped 包名（例如 `@mealmuse/server`），也可以先用 `server`（当前仓库即为该命名），后续再统一重命名
 - server 内提供脚本（示例）：
   - `start:dev`、`build`、`start:prod`
   - `lint`、`format`
@@ -234,10 +234,13 @@ pnpm -r test
 ### 4.2 只跑某个子项目（filter）
 
 ```bash
-pnpm --filter @mealmuse/client dev:h5
-pnpm --filter @mealmuse/client dev:weapp
-pnpm --filter @mealmuse/server start:dev
-pnpm --filter @mealmuse/shared build
+pnpm -C apps/client dev:h5
+pnpm -C apps/client dev:weapp
+pnpm -C apps/server start:dev
+
+# 如果你更偏好 filter 语法，可用路径过滤（不依赖 package name）
+pnpm --filter "./apps/client" dev:h5
+pnpm --filter "./apps/server" start:dev
 ```
 
 ### 4.3 常用过滤技巧
@@ -651,12 +654,12 @@ gitleaks protect --staged --redact --config .gitleaks.toml
 - [ ] 根目录存在 `pnpm-workspace.yaml` 且包含 `apps/*`、`packages/*`
 - [ ] 仓库内只存在 `pnpm-lock.yaml`（无 `package-lock.json` / `yarn.lock`）
 - [ ] `pnpm install` 在干净环境可一次成功
-- [ ] `pnpm -r list --depth -1` 能列出 `@mealmuse/client`、`@mealmuse/server`、`@mealmuse/shared`
+- [ ] `pnpm -r list --depth -1` 能列出 workspace 下的包（至少包含 `apps/client`、`apps/server`；如已创建 shared，则包含 `packages/shared`）
 
 ### 11.3 脚本编排（pnpm-only）
 
-- [ ] `pnpm --filter @mealmuse/client dev:h5` 可启动
-- [ ] `pnpm --filter @mealmuse/server start:dev` 可启动
+- [ ] `pnpm -C apps/client dev:h5` 可启动（或 `pnpm --filter "./apps/client" dev:h5`）
+- [ ] `pnpm -C apps/server start:dev` 可启动（或 `pnpm --filter "./apps/server" start:dev`）
 - [ ] `pnpm -r lint` 可执行（允许部分规则未完善，但流程要通）
 
 ### 11.4 ESLint + Prettier
