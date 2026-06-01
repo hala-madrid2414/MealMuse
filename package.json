@@ -6,9 +6,19 @@
     "node": ">=20 <21"
   },
   "scripts": {
+    "preinstall": "node scripts/preinstall.js",
     "dev": "pnpm -r --parallel dev",
+    "dev:h5": "pnpm --filter \"./apps/client\" dev:h5",
+    "dev:weapp": "pnpm --filter \"./apps/client\" dev:weapp",
+    "dev:server": "pnpm --filter \"./apps/server\" start:dev",
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "format": "pnpm -r format"
+  },
+  "workspace": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
   }
 }
