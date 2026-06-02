@@ -1,0 +1,9 @@
+node_modules
+.pnpm-store
+.trae
+.husky
+dist
+build
+.temp
+coverage
+*.min.js

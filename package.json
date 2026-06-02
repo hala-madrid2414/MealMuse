@@ -12,13 +12,39 @@
     "dev:weapp": "pnpm --filter \"./apps/client\" dev:weapp",
     "dev:server": "pnpm --filter \"./apps/server\" start:dev",
     "build": "pnpm -r build",
-    "lint": "pnpm -r lint",
-    "format": "pnpm -r format"
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepare": "husky"
   },
   "workspace": {
     "packages": [
       "apps/*",
       "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.4.2",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "*.less": [
+      "prettier --write"
     ]
   }
 }

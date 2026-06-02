@@ -12,7 +12,7 @@
   "scripts": {
     "prepare": "husky",
     "new": "taro new",
-    "build": "taro build:h5",
+    "build": "taro build --type h5",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -31,9 +31,7 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:harmony-hybrid": "npm run build:harmony-hybrid -- --watch",
-    "lint": "echo 'client lint 待配置'",
-    "format": "echo 'client format 待配置'"
+    "dev:harmony-hybrid": "npm run build:harmony-hybrid -- --watch"
   },
   "browserslist": [
     "defaults and fully supports es6-module",
@@ -74,10 +72,6 @@
     "@types/react": "^18.0.0",
     "@vitejs/plugin-react": "^4.3.0",
     "babel-preset-taro": "4.1.11",
-    "eslint": "^8.57.0",
-    "eslint-config-taro": "4.1.11",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.4.0",
     "husky": "^9.1.7",
     "less": "^4.2.0",
     "lint-staged": "^16.1.2",
